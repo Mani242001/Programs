@@ -1,0 +1,8 @@
+alpha='abcdefghijklmnopqrstuvwxyz'
+d={c:ord(c) for c in alpha}
+print('Sample Output:',d)
+    
+
+    
+    
+
