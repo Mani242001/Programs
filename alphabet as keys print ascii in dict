@@ -1,6 +1,21 @@
+##forloop value assigned from declared variable##
+
 alpha='abcdefghijklmnopqrstuvwxyz'
 d={c:ord(c) for c in alpha}
 print('Sample Output:',d)
+
+
+
+
+
+
+
+##import function##
+
+import string
+d={c: ord(c) for c in string.ascii_lowercase}
+print(d)
+
     
 
     
