@@ -1,0 +1,9 @@
+s=str(input("sample string:"))
+lower, upper= 0, 0
+for i in s:
+    if (i>='a'and i<='z'):
+        lower+=1               
+    if (i>='A'and i<='Z'):
+        upper+=1
+print("No.of lowercase:",lower)
+print("No.of uppercase:",upper)
