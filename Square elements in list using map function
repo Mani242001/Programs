@@ -1,0 +1,4 @@
+n = [4, 5, 2, 9]
+print("\nSquare the element of the list:")
+square_n = list(map(lambda x: x ** 2, n))
+print(square_n)
