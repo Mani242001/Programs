@@ -1,0 +1,13 @@
+class point:
+    def __init__(self,x,y,z):
+        self.x=x
+        self.y=y
+        self.z=z
+    def sqsum(self):
+        return str(self.x**2+self.y**2+self.z**2)
+if __name__=='__main__':
+    x=int(input('Enter x value:'))
+    y=int(input('Enter y value:'))
+    z=int(input('Enter z value:'))
+    sqs=point(x,y,z)
+    print(sqs.sqsum())
