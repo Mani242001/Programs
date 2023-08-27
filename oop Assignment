@@ -1,3 +1,4 @@
+##1. Square Numbers and Return Their Sum
 
 class point:
     def __init__(self,x,y,z):
@@ -12,3 +13,37 @@ if __name__=='__main__':
     z=int(input('Enter z value:'))
     sqs=point(x,y,z)
     print(sqs.sqsum())
+
+
+
+##2. Implement a Calculator Class
+
+class calc:
+    def __init__(self,n1,n2):
+        self.n1=n1
+        self.n2=n2
+    def sum(self):
+        print(str(self.n1+self.n2))
+    def sub(self):
+        print(str(self.n1-self.n2))
+    def mul(self):
+        print(str(self.n1*self.n2))
+    def div(self):
+        print(str(self.n1/self.n2))
+if __name__=='__main__':
+    n1=int(input('Enter number1:'))
+    n2=int(input('Enter number2:'))
+    ans=calc(n1,n2)
+    ans.sum()
+    ans.sub()
+    ans.mul()
+    ans.div()
+
+
+##3. Implement the Complete Student Class
+
+
+
+
+
+
