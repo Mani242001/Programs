@@ -12,7 +12,7 @@ if __name__=='__main__':
     z=int(input('Enter z value:'))
     sqs=point(x,y,z)
     print(sqs.sqsum())
-
+___________________________________________________________________________________________________________________________________________
 
 ##2. Implement a Calculator Class
 class calc:
@@ -35,6 +35,7 @@ if __name__=='__main__':
     ans.sub()
     ans.mul()
     ans.div()
+_________________________________________________________________________________________________________________________________________
 
 ##3. Implement the Complete Student Class
 class Student:
@@ -53,7 +54,7 @@ student.setName(name)
 student.setRollNumber(rollNumber)
 print("Student Name:", student.getName())
 print("Roll Number:", student.getRollNumber())
-
+____________________________________________________________________________________________________________________________________
 
 ## 4.Implement a Banking Account
 class Account:
@@ -71,6 +72,46 @@ acnt = SavingsAccount(title, balance, interestRate)
 print("Account title:", acnt.title)
 print("Account balance:", acnt.balance)
 print("Interest rate:", acnt.interestRate)
+___________________________________________________________________________________________________________________________________________________
+
+## 5.Handling a Bank Account
+class Account:
+    def __init__(self, title=None, balance=0):
+        self.title = title
+        self.balance = balance
+    def withdrawal(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print("Withdrawal successful")
+        else:
+            print("Insufficient balance")
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print("Deposit successful")
+        else:
+            print("Invalid amount")
+    def getBalance(self):
+        return self.balance
+
+class SavingsAccount(Account):
+    def __init__(self, title=None, balance=0, interestRate=0):
+        super().__init__(title, balance)
+        self.interestRate = interestRate
+    def interest(self):
+        return self.balance * self.interestRate / 100
+
+title = input("Enter account Title: ")
+balance = int(input("Enter account balance: "))
+interestRate = float(input("Enter Interest rate: "))
+withdraw = int(input("Enter Withdrawal amount: "))
+deposit = int(input("Enter deposit amount: "))
+saving = SavingsAccount(title, balance, interestRate)
+saving.withdrawal(withdraw)
+saving.deposit(deposit)
+print("Current balance:", saving.getBalance())
+print("Interest:", saving.interest())
+
 
 
 
