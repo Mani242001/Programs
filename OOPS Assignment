@@ -1,4 +1,5 @@
 ##1. Square Numbers and Return Their Sum
+
 class point:
     def __init__(self,x,y,z):
         self.x=x
@@ -6,6 +7,7 @@ class point:
         self.z=z
     def sqsum(self):
         return str(self.x**2+self.y**2+self.z**2)
+
 if __name__=='__main__':
     x=int(input('Enter x value:'))
     y=int(input('Enter y value:'))
@@ -15,6 +17,7 @@ if __name__=='__main__':
 ___________________________________________________________________________________________________________________________________________
 
 ##2. Implement a Calculator Class
+
 class calc:
     def __init__(self,n1,n2):
         self.n1=n1
@@ -27,6 +30,7 @@ class calc:
         print(str(self.n1*self.n2))
     def div(self):
         print(str(self.n1/self.n2))
+
 if __name__=='__main__':
     n1=int(input('Enter number1:'))
     n2=int(input('Enter number2:'))
@@ -38,6 +42,7 @@ if __name__=='__main__':
 _________________________________________________________________________________________________________________________________________
 
 ##3. Implement the Complete Student Class
+
 class Student:
     def setName(self, name):
         self.name = name
@@ -47,6 +52,7 @@ class Student:
         self.rollNumber = rollNumber
     def getRollNumber(self):
         return self.rollNumber
+
 name = input("Enter Name: ")
 rollNumber = input("Enter Roll number: ")
 student = Student()
@@ -57,14 +63,17 @@ print("Roll Number:", student.getRollNumber())
 ____________________________________________________________________________________________________________________________________
 
 ## 4.Implement a Banking Account
+
 class Account:
     def __init__(self, title, balance):
         self.title = title
         self.balance = balance
+
 class SavingsAccount(Account):
     def __init__(self, title, balance, interestRate):
         super().__init__(title, balance)
         self.interestRate = interestRate
+
 title = input("Enter account title: ")
 balance = int(input("Enter account balance: "))
 interestRate = float(input("Enter interest rate: "))
@@ -75,6 +84,7 @@ print("Interest rate:", acnt.interestRate)
 ___________________________________________________________________________________________________________________________________________________
 
 ## 5.Handling a Bank Account
+
 class Account:
     def __init__(self, title=None, balance=0):
         self.title = title
