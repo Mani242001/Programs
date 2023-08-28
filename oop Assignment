@@ -42,6 +42,24 @@ if __name__=='__main__':
 
 ##3. Implement the Complete Student Class
 
+class Student:
+    def setName(self, name):
+        self.name = name
+    def getName(self):
+        return self.name
+    def setRollNumber(self, rollNumber):
+        self.rollNumber = rollNumber
+    def getRollNumber(self):
+        return self.rollNumber
+name = input("Enter Name: ")
+rollNumber = input("Enter Roll number: ")
+student = Student()
+student.setName(name)
+student.setRollNumber(rollNumber)
+print("Student Name:", student.getName())
+print("Roll Number:", student.getRollNumber())
+
+
 
 
 
