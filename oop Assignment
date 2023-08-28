@@ -1,5 +1,4 @@
 ##1. Square Numbers and Return Their Sum
-
 class point:
     def __init__(self,x,y,z):
         self.x=x
@@ -15,9 +14,7 @@ if __name__=='__main__':
     print(sqs.sqsum())
 
 
-
 ##2. Implement a Calculator Class
-
 class calc:
     def __init__(self,n1,n2):
         self.n1=n1
@@ -39,9 +36,7 @@ if __name__=='__main__':
     ans.mul()
     ans.div()
 
-
 ##3. Implement the Complete Student Class
-
 class Student:
     def setName(self, name):
         self.name = name
