@@ -1,0 +1,208 @@
+users = []
+food_items = []
+def generate_food_id():
+    return len(food_items) + 1
+
+def add_food_item():
+    name = input("Food Name: ")
+    quantity = input("Quantity (e.g., 100ml, 250gm, 4 pieces): ")
+    price = float(input("Price (INR): "))
+    discount = float(input("Discount (%): "))
+    stock = int(input("Stock: "))
+    food_id = generate_food_id()
+    food_item = {
+        "FoodID": food_id,
+        "Name": name,
+        "Quantity": quantity,
+        "Price": price,
+        "Discount": discount,
+        "Stock": stock,
+    }
+    food_items.append(food_item)
+    print("Food item added successfully!\n")
+
+def edit_food_item():
+    food_id = input("Enter FoodID of the item you want to edit: ")
+    for item in food_items:
+        if item["FoodID"] == food_id:
+            name = input(f"New Food Name ({item['Name']}): ")
+            quantity = input(f"New Quantity ({item['Quantity']}): ")
+            price = float(input(f"New Price (INR, {item['Price']}): "))
+            discount = float(input(f"New Discount (%), {item['Discount']}): "))
+            stock = int(input(f"New Stock ({item['Stock']}): "))
+            item["Name"] = name
+            item["Quantity"] = quantity
+            item["Price"] = price
+            item["Discount"] = discount
+            item["Stock"] = stock
+            print("Food item updated successfully!\n")
+            return
+    print("Food item not found. Please check the FoodID.\n")
+
+def view_food_items():
+    print("List of Food Items:")
+    for item in food_items:
+        print(f"FoodID: {item['FoodID']}")
+        print(f"Name: {item['Name']}")
+        print(f"Quantity: {item['Quantity']}")
+        print(f"Price: INR {item['Price']}")
+        print(f"Discount: {item['Discount']}%")
+        print(f"Stock: {item['Stock']}")
+        print("\n")
+
+def remove_food_item():
+    food_id = int(input("Enter FoodID of the item you want to remove: "))
+    for item in food_items:
+        if item["FoodID"] == food_id:
+            food_items.remove(item)
+            print("Food item removed successfully!\n")
+            return
+    print("Food item not found. Please check the FoodID.\n")
+
+while True:
+    print("Welcome to Tasty Cafe Restaurant")
+    print("1. Add New Food Item")
+    print("2. Edit Food Item")
+    print("3. View Food Items")
+    print("4. Remove Food Item")
+    print("5. Exit")
+    choice = input("Select an option: ")
+    if choice == "1":
+        add_food_item()
+    elif choice == "2":
+        edit_food_item()
+    elif choice == "3":
+        view_food_items()
+    elif choice == "4":
+        remove_food_item()
+    elif choice == "5":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please select a valid option.\n")
+
+##user code
+
+food_items = [
+    {"Name": "Tandoori Chicken (4 pieces)", "Price": 240},
+    {"Name": "Vegan Burger (1 Piece)", "Price": 320},
+    {"Name": "Truffle Cake (500gm)", "Price": 900},
+]
+order_history = []
+
+def register_user():
+    full_name = input("Full Name: ")
+    phone_number = input("Phone Number: ")
+    email = input("Email: ")
+    address = input("Address: ")
+    password = input("Password: ")
+
+    user = {
+        "Full Name": full_name,
+        "Phone Number": phone_number,
+        "Email": email,
+        "Address": address,
+        "Password": password,
+    }
+    users.append(user)
+    print("Registration successful!\n")
+
+
+def login_user():
+    email = input("Email: ")
+    password = input("Password: ")
+    for user in users:
+        if user["Email"] == email and user["Password"] == password:
+            return user
+    return None
+
+def display_food_items():
+    print("Available Food Items:")
+    for index, item in enumerate(food_items, start=1):
+        print(f"{index}. {item['Name']} [INR {item['Price']}]")
+    print()
+
+def place_order(user):
+    display_food_items()
+    selected_items = []
+    while True:
+        try:
+            selection = input("Enter the item numbers to order (comma-separated, 0 to finish): ")
+            if selection == '0':
+                break
+            item_numbers = [int(item) for item in selection.split(",")]
+
+            invalid_items = [item for item in item_numbers if item < 1 or item > len(food_items)]
+            if invalid_items:
+                print(f"Invalid item numbers: {', '.join(map(str, invalid_items))}. Please enter valid item numbers.")
+            else:
+                selected_items.extend([food_items[item - 1] for item in item_numbers])
+                print("Items added to your order.\n")
+        except ValueError:
+            print("Invalid input. Please enter a valid item number or 0 to finish.\n")
+
+    if selected_items:
+        print("Items in your order:")
+        for item in selected_items:
+            print(f"{item['Name']} [INR {item['Price']}]")
+        total_price = sum(item['Price'] for item in selected_items)
+        print(f"Total Price: INR {total_price}\n")
+        order_history.append({"User": user["Full Name"], "Items": selected_items, "Total Price": total_price})
+        print("Order placed successfully!\n")
+    else:
+        print("No items in your order.\n")
+
+def view_order_history():
+    print("Order History:")
+    for order in order_history:
+        print(f"User: {order['User']}")
+        print("Items:")
+        for item in order['Items']:
+            print(f"- {item['Name']} [INR {item['Price']}]")
+        print(f"Total Price: INR {order['Total Price']}\n")
+
+def update_profile(user):
+    print("Update Profile:")
+    user["Full Name"] = input(f"Full Name ({user['Full Name']}): ")
+    user["Phone Number"] = input(f"Phone Number ({user['Phone Number']}): ")
+    user["Email"] = input(f"Email ({user['Email']}): ")
+    user["Address"] = input(f"Address ({user['Address']}): ")
+    user["Password"] = input(f"Password: ")
+
+while True:
+    print("Welcome to the Restaurant Application")
+    print("1. Register")
+    print("2. Log in")
+    print("3. Exit")
+    choice = input("Select an option: ")
+    if choice == "1":
+        register_user()
+    elif choice == "2":
+        logged_in_user = login_user()
+        if logged_in_user:
+            while True:
+                print("User Menu:")
+                print("1. Place New Order")
+                print("2. Order History")
+                print("3. Update Profile")
+                print("4. Log Out")
+                user_choice = input("Select an option: ")
+                if user_choice == "1":
+                    place_order(logged_in_user)
+                elif user_choice == "2":
+                    view_order_history()
+                elif user_choice == "3":
+                    update_profile(logged_in_user)
+                    print("Profile updated successfully!\n")
+                elif user_choice == "4":
+                    break
+                else:
+                    print("Invalid...\n")
+        else:
+            print("Invalid email or password.\n")
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid...\n")
+
